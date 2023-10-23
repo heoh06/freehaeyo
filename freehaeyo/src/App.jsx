@@ -1,10 +1,13 @@
 import './App.css'
+import '@mantine/core/styles.css';
+import MainPage from './Pages/MainPage'
+
 
 function App() {
 
   return (
     <>
-      <h1>나는야할수있다!!!</h1>
+      <MainPage/>
     </>
   )
 }

@@ -3,7 +3,6 @@ import Search from '../Assets/search.svg';
 import CardImg from '../Assets/main_card.png';
 import Background from '../Assets/bg1.svg';
 import Github from '../Assets/github.svg';
-import {Chip} from '@mantine/core';
 
 import NameCard from '../Components/Common/NameCard';
 import HireCard from "../Components/Common/HireCard";

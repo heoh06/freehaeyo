@@ -1,6 +1,7 @@
 import './App.css'
 import '@mantine/core/styles.css';
 import MainPage from './Pages/MainPage'
+import Login from './Pages/Login'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
@@ -10,6 +11,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPage/>}></Route>
+        <Route path="/login" element={<Login/>}></Route>
       </Routes>
     </BrowserRouter>
   )

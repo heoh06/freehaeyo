@@ -7,10 +7,12 @@ import Github from '../Assets/github.svg';
 import NameCard from '../Components/Common/NameCard';
 import HireCard from "../Components/Common/HireCard";
 
+import {Link} from 'react-router-dom';
+
 function MainPage() {
     return (
         <>
-            <header>
+            <header margin-top="4000px">
                 <h1><img src={Logo} alt="프리해요"/></h1>
                 <ul>
                     <li>채용</li>
@@ -18,7 +20,7 @@ function MainPage() {
                 </ul>
                 <ul>
                     <li><img src={Search} alt="검색"/></li>
-                    <li>로그인</li>
+                    <li><Link to="/login">로그인</Link></li>
                     <li>회원가입</li>
                 </ul>
             </header>
@@ -33,11 +35,11 @@ function MainPage() {
                         </ul>
                     </div>
                     <div>
-                        <img src={CardImg} alt="명함" width="200px" height="auto"/>
+                        <img src={CardImg} alt="명함" width="0px" height="auto"/>
                     </div>
                 </section>
                 <section>
-                    <img src={Background} width="100px" height="auto"/>
+                    <img src={Background} width="0px" height="auto"/>
                     <div>
                         <p>프리해요, 누가 만들었을까요?</p>
                         <p>개발진 보러가기</p>

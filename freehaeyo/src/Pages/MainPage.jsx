@@ -3,7 +3,9 @@ import Search from '../Assets/search.svg';
 import CardImg from '../Assets/main_card.png';
 import Background from '../Assets/bg1.svg';
 import Github from '../Assets/github.svg';
-import { Chip } from '@mantine/core';
+
+import NameCard from '../Components/Common/NameCard';
+import HireCard from "../Components/Common/HireCard";
 
 function MainPage() {
     return (
@@ -44,36 +46,13 @@ function MainPage() {
                 <section>
                     <h3>신규채용</h3>
                     <ul>
-                        <li>
-                            <Chip>D-300</Chip>
-                            <div>
-                                <p>프론트엔드 리액트...</p>
-                                <p>(주)프리해요 코오퍼레이션</p>
-                                <p>서울</p>
-                            </div>
-                            <div>
-                                <Chip>연봉상위1%</Chip>
-                                <Chip>연봉상위1%</Chip>
-                                <Chip>연봉상위1%</Chip>
-                            </div>
-                        </li>
+                        <HireCard/>
                     </ul>
                 </section>
                 <section>
                     <h3>금주의 명함</h3>
                     <ul>
-                        <li>
-                            <div>
-                                <p>김땡땡</p>
-                                <p>010-111-1111</p>
-                                <p>e-mail</p>
-                            </div>
-                            <div>
-                                <Chip>연봉상위1%</Chip>
-                                <Chip>연봉상위1%</Chip>
-                                <Chip>연봉상위1%</Chip>
-                            </div>
-                        </li>
+                        <NameCard></NameCard>
                     </ul>
                 </section>
                 <footer>

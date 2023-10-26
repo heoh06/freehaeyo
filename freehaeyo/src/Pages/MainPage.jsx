@@ -20,8 +20,8 @@ function MainPage() {
                 </ul>
                 <ul>
                     <li><img src={Search} alt="검색"/></li>
-                    <li><Link to="/login">로그인</Link></li>
-                    <li>회원가입</li>
+                    <li>로그인</li>
+                    <li><Link to="/signup">회원가입</Link></li>
                 </ul>
             </header>
             <main>

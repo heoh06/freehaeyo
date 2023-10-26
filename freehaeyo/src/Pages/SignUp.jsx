@@ -1,20 +1,20 @@
 import Logo from '../Assets/logo.svg';
 import FreelancerForm from '../Components/Signup/FreelancerForm';
 import CompanyForm from '../Components/Signup/CompanyForm';
+import SelectUser from '../Components/Signup/SelectUser';
+
+import {Link} from 'react-router-dom';
 
 function SignUp(){
     return(
         <>
-            <p>홈으로</p>
+            <p><Link to="/">홈으로</Link></p>
             <div>
                 <main>
                     <h2><img src={Logo} alt="프리해요"/></h2>
                     <span>회원 가입 유형을 선택 후<p></p>가입 해 주세요</span>
                     <form>
-                        <ul>
-                            <li>🧑‍💻프리랜서</li>
-                            <li>🏢 회사 · 의뢰인</li>
-                        </ul>
+                        <SelectUser/>
                         <FreelancerForm/>
                         <CompanyForm/>
                         <div>

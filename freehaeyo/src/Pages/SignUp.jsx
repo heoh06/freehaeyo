@@ -3,10 +3,12 @@ import FreelancerForm from '../Components/Signup/FreelancerForm';
 import CompanyForm from '../Components/Signup/CompanyForm';
 import SelectUser from '../Components/Signup/SelectUser';
 
+import {Link} from 'react-router-dom';
+
 function SignUp(){
     return(
         <>
-            <p>홈으로</p>
+            <p><Link to="/">홈으로</Link></p>
             <div>
                 <main>
                     <h2><img src={Logo} alt="프리해요"/></h2>

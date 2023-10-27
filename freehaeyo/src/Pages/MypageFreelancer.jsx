@@ -1,5 +1,8 @@
 import NameCard from '../Components/Common/NameCard';
 import InfoBox from '../Components/Common/MyPage/InfoBox';
+import InfoSummaryBox from '../Components/Common/MyPage/InfoSummaryBox';
+
+import {Link} from 'react-router-dom';
 
 function MypageFreelancer(){
     return(
@@ -14,18 +17,11 @@ function MypageFreelancer(){
                             <ul>
                                 <li>이력</li>
                             </ul>
-                            <button>명함·이력 수정하기</button>
+                            <button><Link to="/changeuserinfo">명함·이력 수정하기</Link></button>
                         </div>
                     </section>
                     <section>
-                        <div>
-                            <p>지원 현황</p>
-                            <ul>
-                                <li><span>0</span><p>명함넣은 회사</p></li>
-                                <li><span>0</span><p>채택한 명함</p></li>
-                                <li><span>0</span><p>북마크한 회사</p></li>
-                            </ul>
-                        </div>
+                        <InfoSummaryBox/>
                         <InfoBox/>
                         <InfoBox/>
                     </section>

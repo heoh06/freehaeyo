@@ -11,6 +11,7 @@ import MypageCompany from './Pages/MypageCompany';
 import ChangeUserInfo from './Pages/ChangeUserInfo';
 import ChangeCompanyInfo from './Pages/ChangeCompanyInfo';
 import NameCardList from './Pages/NameCardList';
+import CreateHire from './Pages/CreateHire';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -30,6 +31,7 @@ function App() {
         <Route path="/changeuserinfo" element={<ChangeUserInfo/>}></Route>
         <Route path="/changecompanyinfo" element={<ChangeCompanyInfo/>}></Route>
         <Route path="/namecardlist" element={<NameCardList/>}></Route>
+        <Route path="/createhire" element={<CreateHire/>}></Route>
       </Routes>
     </BrowserRouter>
   )

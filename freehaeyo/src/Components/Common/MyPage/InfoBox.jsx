@@ -2,6 +2,8 @@ import NoContentBox from "./NoContentBox";
 import HireSummaryCard from "./HireSummaryCard";
 import HiringSummaryCard from "./HiringSummaryCard";
 
+import {Link} from 'react-router-dom';
+
 function InfoBox(){
     return(
         <div>
@@ -10,7 +12,7 @@ function InfoBox(){
                 <span>12</span>
             </div>
             <div>
-                <p>+ 채용 추가하기</p>
+                <p><Link to="/createhire">+ 채용 추가하기</Link></p>
             </div>
             <div>
                 <NoContentBox/>

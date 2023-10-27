@@ -9,6 +9,7 @@ import HireInfo from './Pages/HireInfo'
 import MypageFreelancer from './Pages/MypageFreelancer';
 import MypageCompany from './Pages/MypageCompany';
 import ChangeUserInfo from './Pages/ChangeUserInfo';
+import ChangeCompanyInfo from './Pages/ChangeCompanyInfo';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/mypage" element={<MypageFreelancer/>}></Route>
         <Route path="/mypagec" element={<MypageCompany/>}></Route>
         <Route path="/changeuserinfo" element={<ChangeUserInfo/>}></Route>
+        <Route path="/changecompanyinfo" element={<ChangeCompanyInfo/>}></Route>
       </Routes>
     </BrowserRouter>
   )

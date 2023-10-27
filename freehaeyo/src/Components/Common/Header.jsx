@@ -8,7 +8,7 @@ function Header(){
         <header margin-top="4000px">
             <h1><img src={Logo} alt="프리해요"/></h1>
             <ul>
-                <li>채용</li>
+                <li><Link to="/hire">채용</Link></li>
                 <li>개발진</li>
             </ul>
             <ul>

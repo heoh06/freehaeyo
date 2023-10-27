@@ -9,7 +9,7 @@ function Header(){
             <h1><img src={Logo} alt="프리해요"/></h1>
             <ul>
                 <li><Link to="/hire">채용</Link></li>
-                <li>개발진</li>
+                <li><Link to="/developer">개발진</Link></li>
             </ul>
             <ul>
                 <li><img src={Search} alt="검색"/></li>

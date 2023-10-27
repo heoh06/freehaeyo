@@ -6,6 +6,8 @@ import HireCard from "../Components/Common/HireCard";
 import Header from "../Components/Common/Header";
 import Footer from "../Components/Common/Footer";
 
+import {Link} from 'react-router-dom';
+
 function MainPage() {
     return (
         <>
@@ -26,10 +28,12 @@ function MainPage() {
                 </section>
                 <section>
                     <img src={Background} width="0px" height="auto"/>
-                    <div>
-                        <p>프리해요, 누가 만들었을까요?</p>
-                        <p>개발진 보러가기</p>
-                    </div>
+                    <Link to="/developer">
+                        <div>
+                            <p>프리해요, 누가 만들었을까요?</p>
+                            <p>개발진 보러가기</p>
+                        </div>
+                    </Link>
                 </section>
                 <section>
                     <h3>신규채용</h3>

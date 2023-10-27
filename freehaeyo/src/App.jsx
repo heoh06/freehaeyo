@@ -12,6 +12,7 @@ import ChangeUserInfo from './Pages/ChangeUserInfo';
 import ChangeCompanyInfo from './Pages/ChangeCompanyInfo';
 import NameCardList from './Pages/NameCardList';
 import CreateHire from './Pages/CreateHire';
+import Developer from './Pages/Developer';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/changecompanyinfo" element={<ChangeCompanyInfo/>}></Route>
         <Route path="/namecardlist" element={<NameCardList/>}></Route>
         <Route path="/createhire" element={<CreateHire/>}></Route>
+        <Route path="/developer" element={<Developer/>}></Route>
       </Routes>
     </BrowserRouter>
   )

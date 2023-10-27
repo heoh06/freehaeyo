@@ -1,29 +1,15 @@
-import Logo from '../Assets/logo.svg';
-import Search from '../Assets/search.svg';
 import CardImg from '../Assets/main_card.png';
 import Background from '../Assets/bg1.svg';
-import Github from '../Assets/github.svg';
 
 import NameCard from '../Components/Common/NameCard';
 import HireCard from "../Components/Common/HireCard";
-
-import {Link} from 'react-router-dom';
+import Header from "../Components/Common/Header";
+import Footer from "../Components/Common/Footer";
 
 function MainPage() {
     return (
         <>
-            <header margin-top="4000px">
-                <h1><img src={Logo} alt="프리해요"/></h1>
-                <ul>
-                    <li>채용</li>
-                    <li>개발진</li>
-                </ul>
-                <ul>
-                    <li><img src={Search} alt="검색"/></li>
-                    <li><Link to="/login">로그인</Link></li>
-                    <li><Link to="/signup">회원가입</Link></li>
-                </ul>
-            </header>
+            <Header/>
             <main>
                 <section>
                     <div>
@@ -57,22 +43,7 @@ function MainPage() {
                         <NameCard></NameCard>
                     </ul>
                 </section>
-                <footer>
-                    <div>
-                        <img src={Logo} alt="프리해요"/>
-                        <p>freehaeyo@gmail.com</p>
-                        <p>코드스테이츠 44기 과제</p>
-                    </div>
-                    <ul>
-                        <li>이용약관</li>
-                        <li>개인정보처리방침</li>
-                        <li>개발진</li>
-                    </ul>
-                    <div>
-                        <img src={Github}/>
-                        <p>Github</p>
-                    </div>
-                </footer>
+                <Footer/>
             </main>
         </>
     )

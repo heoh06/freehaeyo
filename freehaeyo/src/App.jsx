@@ -1,8 +1,7 @@
-import './App.css';
+import './App.css'
 import '@mantine/core/styles.css';
-import MainPage from './Pages/MainPage';
-import SignUp from './Pages/SignUp';
-import Login from './Pages/Login';
+import MainPage from './Pages/MainPage'
+import SignUp from './Pages/SignUp'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
@@ -13,10 +12,9 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage/>}></Route>
         <Route path="/signup" element={<SignUp/>}></Route>
-        <Route path="/login" element={<Login/>}></Route>
       </Routes>
     </BrowserRouter>
   )
 }
 
-export default App;
+export default App

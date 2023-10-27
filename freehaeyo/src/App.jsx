@@ -6,7 +6,8 @@ import SignUp from './Pages/SignUp';
 import Login from './Pages/Login';
 import Hire from './Pages/Hire';
 import HireInfo from './Pages/HireInfo'
-import MyPageFreelancer from './Pages/MyPageFreelancer';
+import MypageFreelancer from './Pages/MypageFreelancer';
+import MypageCompany from './Pages/MypageCompany';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -21,7 +22,8 @@ function App() {
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/hire" element={<Hire/>}></Route>
         <Route path="/hireInfo" element={<HireInfo/>}></Route>
-        <Route path="/mypage" element={<MyPageFreelancer/>}></Route>
+        <Route path="/mypage" element={<MypageFreelancer/>}></Route>
+        <Route path="/mypagec" element={<MypageCompany/>}></Route>
       </Routes>
     </BrowserRouter>
   )

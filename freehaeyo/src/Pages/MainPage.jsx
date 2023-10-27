@@ -43,8 +43,8 @@ function MainPage() {
                         <NameCard></NameCard>
                     </ul>
                 </section>
-                <Footer/>
             </main>
+            <Footer/>
         </>
     )
 }

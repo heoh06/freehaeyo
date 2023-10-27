@@ -8,6 +8,7 @@ import Hire from './Pages/Hire';
 import HireInfo from './Pages/HireInfo'
 import MypageFreelancer from './Pages/MypageFreelancer';
 import MypageCompany from './Pages/MypageCompany';
+import ChangeUserInfo from './Pages/ChangeUserInfo';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/hireInfo" element={<HireInfo/>}></Route>
         <Route path="/mypage" element={<MypageFreelancer/>}></Route>
         <Route path="/mypagec" element={<MypageCompany/>}></Route>
+        <Route path="/changeuserinfo" element={<ChangeUserInfo/>}></Route>
       </Routes>
     </BrowserRouter>
   )

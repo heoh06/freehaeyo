@@ -9,7 +9,7 @@ function Header(){
     const [isLogin, setIsLogin] = useState(false);
 
     return(
-        <header margin-top="4000px">
+        <header>
             <h1><Link to="/"><img src={Logo} alt="프리해요"/></Link></h1>
             <ul>
                 <li><Link to="/hire">채용</Link></li>

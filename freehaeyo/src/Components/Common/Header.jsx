@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 function Header(){
     return(
         <header margin-top="4000px">
-            <h1><img src={Logo} alt="프리해요"/></h1>
+            <h1><Link to="/"><img src={Logo} alt="프리해요"/></Link></h1>
             <ul>
                 <li><Link to="/hire">채용</Link></li>
                 <li><Link to="/developer">개발진</Link></li>

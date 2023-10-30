@@ -1,9 +1,13 @@
 import Logo from '../../Assets/logo.svg';
 import Search from '../../Assets/search.svg';
+import Profile from "../../Assets/profile.svg"
 
+import {useState} from 'react';
 import {Link} from 'react-router-dom';
 
 function Header(){
+    const [isLogin, setIsLogin] = useState(false);
+
     return(
         <header margin-top="4000px">
             <h1><Link to="/"><img src={Logo} alt="프리해요"/></Link></h1>
@@ -11,11 +15,16 @@ function Header(){
                 <li><Link to="/hire">채용</Link></li>
                 <li><Link to="/developer">개발진</Link></li>
             </ul>
-            <ul>
+            <div>
                 {/* <li><img src={Search} alt="검색"/></li> */}
-                <li><Link to="/login">로그인</Link></li>
-                <li><Link to="/signup">회원가입</Link></li>
-            </ul>
+                {isLogin ? 
+                <li><Link to="/mypage"><img src={Profile} alt="마이페이지"/></Link></li>
+                :<ul>
+                    <li><Link to="/login">로그인</Link></li>
+                    <li><Link to="/signup">회원가입</Link></li>
+                </ul>
+                }
+            </div>
         </header>
     )
 }

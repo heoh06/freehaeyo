@@ -8,6 +8,9 @@ import Footer from "../Components/Common/Footer";
 
 import {Link} from 'react-router-dom';
 
+import HireData from "../MockData/HireData.json";
+import NameCardData from "../MockData/NameCardData.json";
+
 function MainPage() {
     return (
         <>
@@ -38,13 +41,17 @@ function MainPage() {
                 <section>
                     <h3>신규채용</h3>
                     <ul>
-                        <HireCard/>
+                        {HireData.map((employmentData)=>{
+                            return <HireCard employmentData={employmentData} key={employmentData.id}/>
+                        }).slice(0,4)}
                     </ul>
                 </section>
                 <section>
                     <h3>금주의 명함</h3>
                     <ul>
-                        <NameCard></NameCard>
+                        {NameCardData.map((data)=>{
+                            return <NameCard userData={data} key={data.id}/>
+                        }).slice(0,4)}
                     </ul>
                 </section>
             </main>

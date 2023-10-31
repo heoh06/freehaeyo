@@ -16,15 +16,16 @@ function Header(){
                 <li><Link to="/developer">개발진</Link></li>
             </ul>
             <div>
-
-                {/* Todo : 검색 기능 추후 구현 예정 <li><img src={Search} alt="검색"/></li> */}
-                {isLoggedIn ? 
-                <ul><li><Link to="/mypage"><img src={Profile} alt="마이페이지"/></Link></li></ul>
-                :<ul>
-                    <li><Link to="/login">로그인</Link></li>
-                    <li><Link to="/signup">회원가입</Link></li>
+                <ul>
+                    {/* Todo : 검색 기능 추후 구현 예정 <li><img src={Search} alt="검색"/></li> */}
+                    {isLoggedIn ? 
+                    <li><Link to="/mypage"><img src={Profile} alt="마이페이지"/></Link></li>
+                    :<>
+                        <li><Link to="/login">로그인</Link></li>
+                        <li><Link to="/signup">회원가입</Link></li>
+                    </>
+                    }
                 </ul>
-                }
             </div>
         </header>
     )

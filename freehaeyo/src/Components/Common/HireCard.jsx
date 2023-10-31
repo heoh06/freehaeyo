@@ -1,12 +1,12 @@
 import Tag from "./Tag";
 
 
-function HireCard({employmentData}){
+function HireCard({ employmentData }){
     const {title, name, region, stack, createdAt} = employmentData;
     return(
         <li>
             <ul>
-                <Tag> 데이터가 렌더링 불가인가?{createdAt && createdAt}</Tag>
+                <Tag tag={createdAt}></Tag>
             </ul>
             <div>
                 <p>{title}</p>
@@ -14,9 +14,7 @@ function HireCard({employmentData}){
                 <p>{region}</p>
             </div>
             <ul>
-                {stack?.map((tag, index)=>{
-                    return <Tag key={index} tag={tag}/>
-                })}
+                {stack?.map((tag, index)=>(<Tag key={index} tag={tag}/>))}
             </ul>
         </li>
     )

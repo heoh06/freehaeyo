@@ -1,7 +1,7 @@
 import Logo from '../../Assets/logo.svg';
 import Github from '../../Assets/github.svg';
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Footer(){
     return(
@@ -19,7 +19,7 @@ function Footer(){
             <a href="/developer">
                 <div>
                     <img src={Github}/>
-                    <p>Github</p>
+                    <span>Github</span>
                 </div>
             </a>
         </footer>

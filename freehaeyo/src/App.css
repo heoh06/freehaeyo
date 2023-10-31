@@ -3,6 +3,11 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+
+  /* Todo:임시 화면 보기용 CSS, 삭제하기 */
+  height: 100%;
+  overflow: scroll;
+  /* 여기까지 */
 }
 
 .logo {

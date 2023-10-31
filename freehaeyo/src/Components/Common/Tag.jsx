@@ -1,9 +1,9 @@
 import { Chip } from '@mantine/core';
 
-function Tag(){
+function Tag({tag}){
     return(
             <li>
-                <Chip>연봉상위1%</Chip>
+                <Chip>{tag}</Chip>
             </li>
     )
 }

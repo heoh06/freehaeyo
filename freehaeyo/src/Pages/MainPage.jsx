@@ -6,9 +6,16 @@ import HireCard from "../Components/Common/HireCard";
 import Header from "../Components/Common/Header";
 import Footer from "../Components/Common/Footer";
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+import HireData from "../MockData/HireData.json";
+import NameCardData from "../MockData/NameCardData.json";
 
 function MainPage() {
+
+    const slicedHireData = HireData.slice(0,4);
+    const slicedNameCardData = NameCardData.slice(0,4);
+
     return (
         <>
             <Header/>
@@ -38,13 +45,13 @@ function MainPage() {
                 <section>
                     <h3>신규채용</h3>
                     <ul>
-                        <HireCard/>
+                        {slicedHireData.map((employmentData)=>(<HireCard employmentData={employmentData} key={employmentData.id}/>))}
                     </ul>
                 </section>
                 <section>
                     <h3>금주의 명함</h3>
                     <ul>
-                        <NameCard></NameCard>
+                        {slicedNameCardData.map((data)=>(<NameCard userData={data} key={data.id}/>))}
                     </ul>
                 </section>
             </main>

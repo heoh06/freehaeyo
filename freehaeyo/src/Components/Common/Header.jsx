@@ -1,12 +1,12 @@
 import Logo from '../../Assets/logo.svg';
-import Search from '../../Assets/search.svg';
+// Todo : 검색 기능 나중에 구현 예정 import Search from '../../Assets/search.svg';
 import Profile from "../../Assets/profile.svg"
 
-import {useState} from 'react';
-import {Link} from 'react-router-dom';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Header(){
-    const [isLogin, setIsLogin] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     return(
         <header>
@@ -16,9 +16,10 @@ function Header(){
                 <li><Link to="/developer">개발진</Link></li>
             </ul>
             <div>
-                {/* <li><img src={Search} alt="검색"/></li> */}
-                {isLogin ? 
-                <li><Link to="/mypage"><img src={Profile} alt="마이페이지"/></Link></li>
+
+                {/* Todo : 검색 기능 추후 구현 예정 <li><img src={Search} alt="검색"/></li> */}
+                {isLoggedIn ? 
+                <ul><li><Link to="/mypage"><img src={Profile} alt="마이페이지"/></Link></li></ul>
                 :<ul>
                     <li><Link to="/login">로그인</Link></li>
                     <li><Link to="/signup">회원가입</Link></li>

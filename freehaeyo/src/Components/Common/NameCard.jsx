@@ -1,6 +1,6 @@
 import Tag from "./Tag"
 
-function NameCard({userData}){
+function NameCard({ userData }){
     const {name, phone, email, stack} = userData;
 
     return(
@@ -11,9 +11,7 @@ function NameCard({userData}){
                 <p>{email}</p>
             </div>
             <ul>
-                {stack?.map((tag, index)=>{
-                    return <Tag key={index} tag={tag}/>
-                })}
+                {stack?.map((tag, index)=>(<Tag key={index} tag={tag}/>))}
             </ul>
         </li>
     )

@@ -5,40 +5,25 @@ import HireCard from '../Components/Common/HireCard';
 import HireData from '../MockData/HireData';
 import HireTagData from '../MockData/HireTagData';
 
-import { useState, useEffect } from 'react';
+import { Chip } from '@mantine/core';
+import { Group } from '@mantine/core';
+
+import { useState} from 'react';
 
 function Hire(){
-    const [hireTagData, setHireTagData] = useState(HireTagData);
-    const [isCheckedTag, setIsCheckedTag] = useState(false);
-    const [filterTag, setFilterTag] = useState([]);
-
-    const handleTagClick = (id) => {
-        setIsCheckedTag(!isCheckedTag);
-        hireTagData[id].isChecked = !isCheckedTag;
-    }
-
-    useEffect(()=>{
-        setFilterTag(HireTagData.filter((data)=>data.isChecked));
-    }, [isCheckedTag, HireTagData] )
-
+    const [checkedTag, setCheckedTag] = useState([]);
+    
     return(
         <>
             <Header/>
             <main>
                 <section>
                     <div>
-                        <ul>
-                            {hireTagData.map((data)=>
-                                (
-                                <Tag 
-                                categoryData={data}
-                                key={data.id}
-                                handleTagClick={handleTagClick}
-                                type="selectTag"
-                                />
-                                )
-                            )}
-                        </ul>
+                        <Chip.Group multiple onChange={setCheckedTag}>
+                            <Group>
+                            {HireTagData.map((data)=>(<Tag tag={data.category} key={data.id}/>))}
+                            </Group>
+                        </Chip.Group>
                     </div>
                 </section>
                 <section>

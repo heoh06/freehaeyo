@@ -2,13 +2,14 @@ import Header from '../Components/Common/Header';
 import Tag from '../Components/Common/Tag';
 import HireCard from '../Components/Common/HireCard';
 
-import HireData from '../MockData/HireData';
+import HireData from '../MockData/HireData.json';
 import HireTagData from '../MockData/HireTagData';
 
 import { Chip } from '@mantine/core';
 import { Group } from '@mantine/core';
 
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Hire() {
   const [checkedTag, setCheckedTag] = useState([]);
@@ -33,7 +34,9 @@ function Hire() {
             <ul>
               {/* Todo:무한스크롤 */}
               {HireData.map((data) => (
-                <HireCard employmentData={data} key={data.id} />
+                <Link to={`/hireinfo/${data.id}`} key={data.id}>
+                  <HireCard employmentData={data} key={data.id} />
+                </Link>
               ))}
             </ul>
           </div>

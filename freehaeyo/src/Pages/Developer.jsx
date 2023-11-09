@@ -1,4 +1,3 @@
-import NameCard from '../Components/Common/NameCard';
 import Header from '../Components/Common/Header';
 
 import Profile from '../Assets/profile.png';

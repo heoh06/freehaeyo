@@ -36,7 +36,7 @@ function App() {
         <Route path="/namecardlist" element={<NameCardList />}></Route>
         <Route path="/createhire" element={<CreateHire />}></Route>
         <Route path="/developer" element={<Developer />}></Route>
-        <Route path="/userinfo" element={<UserInfo />}></Route>
+        <Route path="/userinfo/:id" element={<UserInfo />}></Route>
       </Routes>
     </BrowserRouter>
   );

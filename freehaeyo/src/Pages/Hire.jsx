@@ -9,7 +9,6 @@ import { Chip } from '@mantine/core';
 import { Group } from '@mantine/core';
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 function Hire() {
   const [checkedTag, setCheckedTag] = useState([]);
@@ -34,9 +33,7 @@ function Hire() {
             <ul>
               {/* Todo:무한스크롤 */}
               {HireData.map((data) => (
-                <Link to={`/hireinfo/${data.id}`} key={data.id}>
-                  <HireCard employmentData={data} key={data.id} />
-                </Link>
+                <HireCard employmentData={data} key={data.id} />
               ))}
             </ul>
           </div>

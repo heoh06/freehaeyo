@@ -49,15 +49,10 @@ function MainPage() {
           <h3>신규채용</h3>
           <ul>
             {slicedHireData.map((employmentData) => (
-              <Link
-                to={`/hireinfo/${employmentData.id}`}
+              <HireCard
+                employmentData={employmentData}
                 key={employmentData.id}
-              >
-                <HireCard
-                  employmentData={employmentData}
-                  key={employmentData.id}
-                />
-              </Link>
+              />
             ))}
           </ul>
         </section>

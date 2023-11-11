@@ -1,14 +1,14 @@
 import Tag from '../Tag';
 
-function DueDate({ createdAt }) {
+function DueDate({ dueDate }) {
   const today = new Date();
-  const createdAtDate = new Date(createdAt);
+  const newDueDate = new Date(dueDate);
 
-  const todayMinusCreatedAt = today - createdAtDate;
-  const dueDate = 'D' + Math.floor(todayMinusCreatedAt / (1000 * 60 * 60 * 24));
+  const todayMinusDueDate = today - newDueDate;
+  const dueDateFormat =
+    'D' + Math.floor(todayMinusDueDate / (1000 * 60 * 60 * 24));
 
-  console.log(dueDate);
-  return <Tag tag={dueDate} />;
+  return <Tag tag={dueDateFormat} />;
 }
 
 export default DueDate;

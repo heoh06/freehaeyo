@@ -1,5 +1,6 @@
 import Tag from './Tag';
 import CompanyData from '../../MockData/CompanyData.json';
+import DueDate from './HireInfo/DueDate';
 
 import { Link } from 'react-router-dom';
 
@@ -15,7 +16,7 @@ function HireCard({ employmentData }) {
     <li>
       <Link to={`/hireinfo/${id}`}>
         <ul>
-          <Tag tag={createdAt}></Tag>
+          <DueDate createdAt={createdAt}></DueDate>
         </ul>
         <div>
           <p>{title}</p>

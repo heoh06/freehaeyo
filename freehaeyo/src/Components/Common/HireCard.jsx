@@ -5,7 +5,7 @@ import DueDate from './HireInfo/DueDate';
 import { Link } from 'react-router-dom';
 
 function HireCard({ employmentData }) {
-  const { id, title, createdAt, stacks, companyId } = employmentData;
+  const { id, title, dueDate, stacks, companyId } = employmentData;
 
   const currentCompanyData = CompanyData.filter(
     (company) => company.id === companyId,
@@ -16,7 +16,7 @@ function HireCard({ employmentData }) {
     <li>
       <Link to={`/hireinfo/${id}`}>
         <ul>
-          <DueDate createdAt={createdAt}></DueDate>
+          <DueDate dueDate={dueDate}></DueDate>
         </ul>
         <div>
           <p>{title}</p>

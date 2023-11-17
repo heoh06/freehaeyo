@@ -1,13 +1,13 @@
-
-function CompanyCard(){
-    return(
-        <div>
-            <p>회사 정보</p>
-            <p>회사 이름</p>
-            <p>000 0000 0000</p>
-            <p>e-mail</p>
-        </div>
-    )
+function CompanyCard({ companyData }) {
+  const { name, phone, email } = companyData;
+  return (
+    <div>
+      <span>회사 정보</span>
+      <span>{name}</span>
+      <span>{phone}</span>
+      <span>{email}</span>
+    </div>
+  );
 }
 
 export default CompanyCard;

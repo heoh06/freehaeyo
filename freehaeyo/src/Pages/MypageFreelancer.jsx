@@ -13,7 +13,6 @@ function MypageFreelancer() {
   const userCareer = currentUserData.resume;
 
   // Todo: LocalStorage에 저장된 유저 정보 받아오기
-  //생각이란걸 해보자.....
 
   return (
     <>

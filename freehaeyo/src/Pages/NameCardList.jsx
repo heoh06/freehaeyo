@@ -13,6 +13,8 @@ function NameCardList() {
   function onChangeCheckBox(checked, userId) {
     if (checked) {
       setCheckedUserId([...checkedUserId, userId]);
+    } else if (!checked) {
+      setCheckedUserId(checkedUserId.filter((id) => id !== userId));
     }
   }
 

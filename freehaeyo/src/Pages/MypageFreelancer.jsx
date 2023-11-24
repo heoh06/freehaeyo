@@ -1,3 +1,4 @@
+import Header from '../Components/Common/Header';
 import NameCard from '../Components/Common/NameCard';
 import InfoBox from '../Components/Common/MyPage/InfoBox';
 import InfoSummaryBox from '../Components/Common/MyPage/InfoSummaryBox';
@@ -5,14 +6,15 @@ import InfoSummaryBox from '../Components/Common/MyPage/InfoSummaryBox';
 import UserData from '../MockData/UserData.json';
 
 import { Link } from 'react-router-dom';
+import { getItemLocalStorage } from '../services/localStorage';
 
 function MypageFreelancer() {
-  // Todo: 나중에 로그인 상태값 받아오면서 유저 id값도 받아오기
   const userId = 1;
-  const currentUserData = UserData.filter((user) => user.id === userId)[0];
-  const userCareer = currentUserData.resume;
+  const userDataById = UserData.filter((user) => user.id === userId)[0];
+  const userCareer = userDataById.resume;
 
-  // Todo: LocalStorage에 저장된 유저 정보 받아오기
+  const bookmarkedList = getItemLocalStorage('bookmarkedList') || '[]';
+  const parsedBookmarkedList = JSON.parse(bookmarkedList);
 
   return (
     <>
@@ -22,7 +24,7 @@ function MypageFreelancer() {
         <main>
           <section>
             <ul>
-              <NameCard userData={currentUserData} />
+              <NameCard userData={userDataById} />
             </ul>
             <div>
               <p>이력</p>
@@ -37,9 +39,15 @@ function MypageFreelancer() {
             </div>
           </section>
           <section>
-            <InfoSummaryBox userType={'freelancer'} />
-            <InfoBox infoCategory={'application'} />
-            <InfoBox infoCategory={'bookmark'} />
+            <InfoSummaryBox
+              userType={'freelancer'}
+              bookmarkedData={parsedBookmarkedList}
+            />
+            <InfoBox infoCategory={'application'} applicationData={undefined} />
+            <InfoBox
+              infoCategory={'bookmark'}
+              bookmarkedData={parsedBookmarkedList}
+            />
           </section>
         </main>
       </div>

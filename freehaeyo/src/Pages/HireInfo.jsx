@@ -11,27 +11,43 @@ import CompanyData from '../MockData/CompanyData.json';
 
 import { Link, useParams } from 'react-router-dom';
 
+import {
+  setItemLocalStorage,
+  getItemLocalStorage,
+} from '../services/localStorage';
+
 function HireInfo() {
   // Todo:나중에 로그인 상태관리로 가져오기
-  const isLoggined = false;
+  //   Todo : 로그인 상태 false값으로 바꾸기
+  const isLoggined = true;
   // Todo:currentUserId에 현재 유저 ID 넣고 나중에 상태관리로 바꾸기
   const currentUserId = 1;
   const currentUser = UserData.filter((user) => user.id === currentUserId)[0];
 
-  const hireParams = useParams();
-  const currentHireData = HireData[hireParams.id];
+  const { id: hireId } = useParams();
+  const hireData = HireData.filter((hire) => hire.id === Number(hireId))[0];
 
-  const currentCompanyId = currentHireData.companyId;
+  const companyId = hireData.companyId;
   const companyData = CompanyData.filter(
-    (company) => company.id === currentCompanyId,
+    (company) => company.id === companyId,
   )[0];
 
-  const dueDate = new Date(currentHireData.createdAt).toLocaleDateString(
-    'ko-KR',
-    {
-      dateStyle: 'full',
-    },
-  );
+  const dueDate = new Date(hireData.createdAt).toLocaleDateString('ko-KR', {
+    dateStyle: 'full',
+  });
+
+  const bookmarkedList = getItemLocalStorage('bookmarkedList') || '[]';
+
+  function handleBookmark() {
+    if (bookmarkedList.length > 0) {
+      const newBookmarkedList = bookmarkedList.includes(hireData.id)
+        ? bookmarkedList.filter((bookmark) => bookmark !== hireData.id)
+        : [hireData.id, ...bookmarkedList];
+      setItemLocalStorage('bookmarkedList', newBookmarkedList);
+    } else {
+      setItemLocalStorage('bookmarkedList', [hireData.id]);
+    }
+  }
 
   return (
     <>
@@ -40,18 +56,18 @@ function HireInfo() {
         <section>
           <div>
             <div>
-              <h3>{currentHireData.title}</h3>
+              <h3>{hireData.title}</h3>
               <p>{companyData.name}</p>
               <p>{companyData.region}</p>
             </div>
             <div>
-              {currentHireData.stacks.map((tag, index) => (
+              {hireData.stacks.map((tag, index) => (
                 <Tag tag={tag} key={index} />
               ))}
             </div>
           </div>
           <div>
-            <p>{currentHireData.content}</p>
+            <p>{hireData.content}</p>{' '}
           </div>
           <div>
             <p>마감일</p>
@@ -71,7 +87,11 @@ function HireInfo() {
               <NameCard userData={currentUser} />
               <div>
                 <button>명함넣기</button>
-                <button>북마크하기</button>
+                {bookmarkedList.includes(hireData.id) ? (
+                  <button onClick={handleBookmark}>북마크 해제하기</button>
+                ) : (
+                  <button onClick={handleBookmark}>북마크하기</button>
+                )}
               </div>
             </form>
           ) : (

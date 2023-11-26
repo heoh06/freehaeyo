@@ -2,7 +2,7 @@ import Header from '../Components/Common/Header';
 import Tag from '../Components/Common/Tag';
 import HireCard from '../Components/Common/HireCard';
 
-import HireData from '../MockData/HireData';
+import HireData from '../MockData/HireData.json';
 import HireTagData from '../MockData/HireTagData';
 
 import { Chip } from '@mantine/core';

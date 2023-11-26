@@ -1,29 +1,55 @@
-import NoContentBox from "./NoContentBox";
-import HireSummaryCard from "./HireSummaryCard";
-import HiringSummaryCard from "./HiringSummaryCard";
+import NoContentBox from './NoContentBox';
+import HireSummaryCard from './HireSummaryCard';
+import HireCard from '../HireCard';
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-function InfoBox(){
-    return(
+import MyPageText from '../../../Assets/MyPageText';
+import HireData from '../../../MockData/HireData.json';
+
+function InfoBox({ infoCategory, ...data }) {
+  const { title, noContent, category } = MyPageText.filter(
+    (data) => data.category === infoCategory,
+  )[0];
+
+  const { bookmarkedData, applicationData } = data;
+
+  const bookmarkedList = [bookmarkedData];
+  const bookmarkedHireData = HireData.filter((data) =>
+    bookmarkedList.includes(data.id),
+  );
+
+  return (
+    <div>
+      <div>
+        <p>{title}</p>
+        <span></span>
+      </div>
+      {category === 'hiring' ? (
         <div>
-            <div>
-                <p>명함 넣은 회사</p>
-                <span>12</span>
-            </div>
-            <div>
-                <p><Link to="/createhire">+ 채용 추가하기</Link></p>
-            </div>
-            <div>
-                <NoContentBox/>
-                <ul>
-                    <HireSummaryCard/>
-                    <HiringSummaryCard/>
-                </ul>
-                <div/>
-            </div>
+          <Link to="/createhire">+ 채용추가하기</Link>
         </div>
-    )
+      ) : null}
+      <div>
+        {/* 나중에 empty 파일 어떻게 처리할건지 다시 적기 */}
+        {Object.values(data)[0] === undefined ? (
+          <NoContentBox text={noContent} />
+        ) : null}
+        <ul>
+          {category === 'hiring' && 'pastHire'
+            ? HireData.map((data) => (
+                <HireSummaryCard employmentData={data} key={data.id} />
+              ))
+            : null}
+          {category === 'bookmark'
+            ? bookmarkedHireData.map((data) => (
+                <HireCard employmentData={data} key={data.id} />
+              ))
+            : null}
+        </ul>
+      </div>
+    </div>
+  );
 }
 
 export default InfoBox;

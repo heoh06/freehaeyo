@@ -7,16 +7,23 @@ import { Link } from 'react-router-dom';
 import MyPageText from '../../../Assets/MyPageText';
 import HireData from '../../../MockData/HireData.json';
 
-function InfoBox({ data, infoCategory }) {
+function InfoBox({ infoCategory, ...data }) {
   const { title, noContent, category } = MyPageText.filter(
     (data) => data.category === infoCategory,
   )[0];
+
+  const { bookmarkedData, applicationData } = data;
+
+  const bookmarkedList = [bookmarkedData];
+  const bookmarkedHireData = HireData.filter((data) =>
+    bookmarkedList.includes(data.id),
+  );
 
   return (
     <div>
       <div>
         <p>{title}</p>
-        <span>12</span>
+        <span></span>
       </div>
       {category === 'hiring' ? (
         <div>
@@ -24,18 +31,22 @@ function InfoBox({ data, infoCategory }) {
         </div>
       ) : null}
       <div>
-        <NoContentBox text={noContent} />
+        {/* 나중에 empty 파일 어떻게 처리할건지 다시 적기 */}
+        {Object.values(data)[0] === undefined ? (
+          <NoContentBox text={noContent} />
+        ) : null}
         <ul>
-          {/* Todo: HireData를 LocalStorage에 있는 데이터로 변경하기 */}
-          {category === 'hiring' || 'pastHire'
+          {category === 'hiring' && 'pastHire'
             ? HireData.map((data) => (
                 <HireSummaryCard employmentData={data} key={data.id} />
               ))
-            : HireData.map((data) => (
+            : null}
+          {category === 'bookmark'
+            ? bookmarkedHireData.map((data) => (
                 <HireCard employmentData={data} key={data.id} />
-              ))}
+              ))
+            : null}
         </ul>
-        <div />
       </div>
     </div>
   );

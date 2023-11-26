@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": 0,
     "name": "김땡땡",
     "email": "Sincere@april.biz",
     "city": "서울",
@@ -10,10 +10,10 @@
       "코드스테이츠 44기",
       "프리해요 프론트엔드 개발",
       "그만자고15나 백엔드 개발"
-    ]
+    ],
   },
   {
-    "id": 2,
+    "id": 1,
     "name": "한땡땡",
     "email": "Sincere@april.bi",
     "city": "서울",
@@ -26,7 +26,7 @@
     ]
   },
   {
-    "id": 3,
+    "id": 2,
     "name": "굼땡땡",
     "email": "Sincere@april.bi",
     "city": "서울",
@@ -39,7 +39,7 @@
     ]
   },
   {
-    "id": 4,
+    "id": 3,
     "name": "유땡땡",
     "email": "Sincere@april.bi",
     "city": "서울",
@@ -52,7 +52,7 @@
     ]
   },
   {
-    "id": 5,
+    "id": 4,
     "name": "한땡수",
     "email": "Sincere@april.bi",
     "city": "서울",
@@ -65,7 +65,7 @@
     ]
   },
   {
-    "id": 6,
+    "id": 5,
     "name": "박땡땡",
     "email": "Sincere@april.bi",
     "city": "서울",

@@ -1,10 +1,13 @@
 import Tag from './Tag';
+import { Link } from 'react-router-dom';
+
 
 function NameCard({ userData, checkbox, onChangeCheckBox }) {
   const { id, name, phone, email, stack } = userData;
 
   return (
     <li>
+    <Link to={`/userinfo/${id}`}>
       <div>
         <p>{name}</p>
         <p>{phone}</p>
@@ -23,6 +26,7 @@ function NameCard({ userData, checkbox, onChangeCheckBox }) {
           <Tag key={index} tag={tag} />
         ))}
       </ul>
+      </Link>
     </li>
   );
 }

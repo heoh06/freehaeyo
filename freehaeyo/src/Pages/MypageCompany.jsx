@@ -4,16 +4,27 @@ import InfoBox from '../Components/Common/MyPage/InfoBox';
 import CompanyCard from '../Components/Common/CompanyCard';
 import CompanyInfoCard from '../Components/Common/MyPage/CompanyInfoCard';
 
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import CompanyData from '../MockData/CompanyData.json';
+import { getCompanyData } from '../fakeApi';
 
 function MypageCompany() {
   // Todo:현재 로그인한 companyId값 받아오기
   const companyId = 1;
-  const currentCompanyData = CompanyData.filter(
+  const [companyData, setCompanyData] = useState([]);
+
+  useEffect(() => {
+    getCompanyData(setCompanyData);
+  }, []);
+
+  const currentCompanyData = companyData.filter(
     (company) => company.id === companyId,
   )[0];
+
+  if (companyData.length === 0) {
+    return <div>로딩중</div>;
+  }
 
   return (
     <>

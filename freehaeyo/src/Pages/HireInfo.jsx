@@ -1,15 +1,16 @@
-import Alert from '../Assets/alert.svg';
+import { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 import Header from '../Components/Common/Header';
 import Footer from '../Components/Common/Footer';
 import NameCard from '../Components/Common/NameCard';
 import Tag from '../Components/Common/Tag';
 
-import UserData from '../MockData/UserData.json';
-import HireData from '../MockData/HireData.json';
-import CompanyData from '../MockData/CompanyData.json';
+import Alert from '../Assets/alert.svg';
 
-import { Link, useParams } from 'react-router-dom';
+import UserData from '../MockData/UserData.json';
+
+import { getHireDataById, getCompanyData, getUserData } from '../fakeApi';
 
 import {
   setItemLocalStorage,
@@ -20,16 +21,26 @@ function HireInfo() {
   // Todo:나중에 로그인 상태관리로 가져오기
   //   Todo : 로그인 상태 false값으로 바꾸기
   const isLoggined = true;
+
+  const [hireData, setHireData] = useState([]);
+  const [companyData, setCompanyData] = useState([]);
+  const [userData, setUserData] = useState([]);
+
+  const { id } = useParams();
+  const numId = Number(id);
+
+  useEffect(() => {
+    getHireDataById(setHireData, numId);
+    getCompanyData(setCompanyData);
+    getUserData(setUserData);
+  }, []);
+
   // Todo:currentUserId에 현재 유저 ID 넣고 나중에 상태관리로 바꾸기
   const currentUserId = 1;
-  const currentUser = UserData.filter((user) => user.id === currentUserId)[0];
+  const currentUser = userData.filter((user) => user.id === currentUserId)[0];
 
-  const { id: hireId } = useParams();
-  const hireData = HireData.filter((hire) => hire.id === Number(hireId))[0];
-
-  const companyId = hireData.companyId;
-  const companyData = CompanyData.filter(
-    (company) => company.id === companyId,
+  const companyDataById = companyData.filter(
+    (company) => company.id === hireData.companyId,
   )[0];
 
   const dueDate = new Date(hireData.createdAt).toLocaleDateString('ko-KR', {
@@ -37,17 +48,23 @@ function HireInfo() {
   });
 
   const bookmarkedList = getItemLocalStorage('bookmarkedList') || '[]';
-
   function handleBookmark() {
     if (bookmarkedList.length > 0) {
-      const newBookmarkedList = bookmarkedList.includes(hireData.id)
-        ? bookmarkedList.filter((bookmark) => bookmark !== hireData.id)
-        : [hireData.id, ...bookmarkedList];
+      const newBookmarkedList = bookmarkedList.includes(hireDataById.id)
+        ? bookmarkedList.filter((bookmark) => bookmark !== hireDataById.id)
+        : [hireDataById.id, ...bookmarkedList];
       setItemLocalStorage('bookmarkedList', newBookmarkedList);
     } else {
-      setItemLocalStorage('bookmarkedList', [hireData.id]);
+      setItemLocalStorage('bookmarkedList', [hireDataById.id]);
     }
   }
+
+  if (
+    hireData.length === 0 &&
+    companyData.length === 0 &&
+    userData.length === 0
+  )
+    return <div>로딩중...</div>;
 
   return (
     <>
@@ -57,8 +74,8 @@ function HireInfo() {
           <div>
             <div>
               <h3>{hireData.title}</h3>
-              <p>{companyData.name}</p>
-              <p>{companyData.region}</p>
+              <p>{companyDataById.name}</p>
+              <p>{companyDataById.region}</p>
             </div>
             <div>
               {hireData.stacks.map((tag, index) => (
@@ -67,7 +84,7 @@ function HireInfo() {
             </div>
           </div>
           <div>
-            <p>{hireData.content}</p>{' '}
+            <p>{hireData.content}</p>
           </div>
           <div>
             <p>마감일</p>
@@ -106,9 +123,9 @@ function HireInfo() {
             </div>
           )}
           <div>
-            <p>{companyData.name}</p>
-            <span>{companyData.phone}</span>
-            <p>{companyData.email}</p>
+            <p>{companyDataById.name}</p>
+            <span>{companyDataById.phone}</span>
+            <p>{companyDataById.email}</p>
           </div>
         </section>
       </main>

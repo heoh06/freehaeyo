@@ -8,12 +8,17 @@ import Footer from '../Components/Common/Footer';
 
 import { Link } from 'react-router-dom';
 
-import HireData from '../MockData/HireData.json';
-import UserData from '../MockData/UserData.json';
+import { useEffect, useState } from 'react';
+import { getUserData, getHireData } from '../fakeApi';
 
 function MainPage() {
-  const slicedHireData = HireData.slice(0, 4);
-  const slicedUserData = UserData.slice(0, 4);
+  const [hireData, setHireData] = useState([]);
+  const [userData, setUserData] = useState([]);
+
+  useEffect(() => {
+    getHireData(setHireData);
+    getUserData(setUserData);
+  }, []);
 
   return (
     <>
@@ -48,7 +53,7 @@ function MainPage() {
         <section>
           <h3>신규채용</h3>
           <ul>
-            {slicedHireData.map((employmentData) => (
+            {hireData.map((employmentData) => (
               <HireCard
                 employmentData={employmentData}
                 key={employmentData.id}
@@ -59,9 +64,9 @@ function MainPage() {
         <section>
           <h3>금주의 명함</h3>
           <ul>
-            {slicedUserData.map((data) => (
-              <NameCard userData={data} key={data.id} />
-            ))}
+            {userData
+              .map((data) => <NameCard userData={data} key={data.id} />)
+              .slice(0, 4)}
           </ul>
         </section>
       </main>

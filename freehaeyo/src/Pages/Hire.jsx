@@ -2,16 +2,22 @@ import Header from '../Components/Common/Header';
 import Tag from '../Components/Common/Tag';
 import HireCard from '../Components/Common/HireCard';
 
-import HireData from '../MockData/HireData.json';
-import HireTagData from '../MockData/HireTagData';
-
 import { Chip } from '@mantine/core';
 import { Group } from '@mantine/core';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+import { getHireData, getHireTagData } from '../fakeApi';
 
 function Hire() {
   const [checkedTag, setCheckedTag] = useState([]);
+  const [hireData, setHireData] = useState([]);
+  const [hireTagData, setHireTagData] = useState([]);
+
+  useEffect(() => {
+    getHireData(setHireData);
+    getHireTagData(setHireTagData);
+  }, []);
 
   return (
     <>
@@ -21,7 +27,7 @@ function Hire() {
           <div>
             <Chip.Group multiple onChange={setCheckedTag}>
               <Group>
-                {HireTagData.map((data) => (
+                {hireTagData.map((data) => (
                   <Tag tag={data.category} key={data.id} />
                 ))}
               </Group>
@@ -32,7 +38,7 @@ function Hire() {
           <div>
             <ul>
               {/* Todo:무한스크롤 */}
-              {HireData.map((data) => (
+              {hireData.map((data) => (
                 <HireCard employmentData={data} key={data.id} />
               ))}
             </ul>

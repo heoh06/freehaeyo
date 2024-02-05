@@ -35,10 +35,11 @@ export function getCompanyData(setData) {
     .catch((err) => console.log(err));
 }
 
-export function postUserData(data) {
-  axios.post('/userinfo', data, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+export async function postUserData(data) {
+  try {
+    const response = await axios.post('/userinfo', data);
+    return response;
+  } catch (error) {
+    return error;
+  }
 }

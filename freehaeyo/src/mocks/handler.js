@@ -7,43 +7,33 @@ import mockHireTagData from '../MockData/HireTagData.json';
 
 export const handlers = [
   // get요청
-  http.get('/hire', () => {
-    return HttpResponse.json(mockHireData);
-  }),
+  http.get('/hire', () => HttpResponse.json(mockHireData)),
 
   http.get('/hire/:id', ({ params }) => {
     const { id } = params;
     return HttpResponse.json(mockHireData[id]);
   }),
 
-  http.get('/hiretag', () => {
-    return HttpResponse.json(mockHireTagData);
-  }),
+  http.get('/hiretag', () => HttpResponse.json(mockHireTagData)),
 
-  http.get('/userinfo', () => {
-    return HttpResponse.json(mockUserData);
-  }),
+  http.get('/userinfo', () => HttpResponse.json(mockUserData)),
 
-  http.get('/companyinfo', () => {
-    return HttpResponse.json(mockCompanyData);
-  }),
+  http.get('/companyinfo', () => HttpResponse.json(mockCompanyData)),
 
   // post요청
   http.post('/userinfo', async ({ request }) => {
-    const { name, email, password, phone, stack, resume } =
-      await request.json();
+    const jsonfiedUser = await request.json();
 
-    const newUser = {
+    const newUserData = {
       id: mockUserData.length + 1,
-      name,
-      email,
-      password,
-      phone,
-      stack,
-      resume,
+      ...jsonfiedUser,
     };
 
-    mockUserData.push(newUser);
-    return HttpResponse.json({ message: '회원가입 성공', user: newUser });
+    // Todo:나중에 localStorage로 변환 시키기
+    mockUserData.push(newUserData);
+
+    return HttpResponse.json({ message: '회원가입 성공', user: newUserData });
   }),
 ];
+
+export default handlers;

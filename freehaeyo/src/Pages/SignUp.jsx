@@ -18,6 +18,16 @@ function SignUp() {
     setIsAgreed(!isAgreed);
   }
 
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      const response = await postUserData(userInfo);
+      console.log(response);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
   return (
     <>
       <p>
@@ -60,17 +70,7 @@ function SignUp() {
                 동의
               </label>
             </div>
-            <button
-              type="submit"
-              onClick={async () => {
-                try {
-                  const response = await postUserData(userInfo);
-                  console.log(response);
-                } catch (error) {
-                  console.error('Error:', error);
-                }
-              }}
-            >
+            <button type="submit" onClick={handleSubmit}>
               회원가입
             </button>
           </form>

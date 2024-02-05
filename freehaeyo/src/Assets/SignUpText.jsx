@@ -5,7 +5,8 @@ const SignUpText = [
     type: 'text',
     placeholder: '이메일을 입력해주세요',
     regEx:
-      /^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\\@([A-Z|a-z|0-9])+((\.){0,1}[A-Z|a-z|0-9]){2}\.[a-z]{2,3}$/,
+      // eslint-disable-next-line no-useless-escape
+      /^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\@([A-Z|a-z|0-9])+((\.){0,1}[A-Z|a-z|0-9]){2}\.[a-z]{2,3}$/,
     errorMessage: '이메일 형식에 맞지 않습니다.',
     required: true,
   },

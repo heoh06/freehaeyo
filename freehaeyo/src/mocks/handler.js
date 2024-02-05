@@ -28,35 +28,22 @@ export const handlers = [
     return HttpResponse.json(mockCompanyData);
   }),
 
-  //   http.get('/company', async (req, res, ctx) => {
-  //     return res(ctx.status(200), ctx.json(mockCompanyData));
-  //   }),
-  //   http.get('/hire', async (req, res, ctx) => {
-  //     return res(ctx.status(200), ctx.json(mockHireData));
-  //   }),
-  //   http.get('/hire/:id', async (req, res, ctx, params) => {
-  //     const { id } = params;
-  //     return res(ctx.status(200), ctx.json(mockHireData[id]));
-  //   }),
-  //   http.get('/userinfo', async (req, res, ctx) => {
-  //     return res(ctx.status(200), ctx.json(mockUserData));
-  //   }),
-  //   http.get('/userinfo/:id', async (req, res, ctx, params) => {
-  //     const { id } = params;
-  //     return res(ctx.status(200), ctx.json(mockUserData[id]));
-  //   }),
-  //   http.get('/hiretag', async (req, res, ctx) => {
-  //     return res(ctx.status(200), ctx.json(mockHireTagData));
-  //   }),
+  // post요청
+  http.post('/userinfo', async ({ request }) => {
+    const { name, email, password, phone, stack, resume } =
+      await request.json();
 
-  //   //   post요청
-  //   http.post('/hire', async (req, res, ctx) => {
-  //     mockHireData.push(req.body);
-  //     return res(ctx.status(201), ctx.json(mockHireData));
-  //   }),
-  //   http.post('/hire/:id', async (req, res, ctx, params) => {
-  //     const { id } = params;
-  //     mockHireData[id].push(req.body);
-  //     return res(ctx.status(201), ctx.json(mockHireData));
-  //   }),
+    const newUser = {
+      id: mockUserData.length + 1,
+      name,
+      email,
+      password,
+      phone,
+      stack,
+      resume,
+    };
+
+    mockUserData.push(newUser);
+    return HttpResponse.json({ message: '회원가입 성공', user: newUser });
+  }),
 ];

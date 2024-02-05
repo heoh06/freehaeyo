@@ -34,3 +34,11 @@ export function getCompanyData(setData) {
     .then((res) => setData(res.data))
     .catch((err) => console.log(err));
 }
+
+export function postUserData(data) {
+  axios.post('/userinfo', data, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+}

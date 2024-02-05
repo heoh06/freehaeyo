@@ -1,14 +1,14 @@
-import Delete from '../../Assets/delete.svg';
+import { TagsInput } from '@mantine/core';
 
-function Career(){
-    return(
-        <li>
-            <label htmlFor="record">이력</label>
-            <input id="record" type="text" placeholder="이력을 입력해주세요"></input>
-            <img src={Delete} alt="삭제"/>
-            <button>+ 이력 추가하기</button>
-        </li>
-    )
+import styled from 'styled-components';
+
+function Career({ setValue }) {
+  return (
+    <li>
+      <label>이력</label>
+      <TagsInput placeholder="이력을 입력하세요" onChange={setValue} />
+    </li>
+  );
 }
 
 export default Career;

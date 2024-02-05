@@ -3,7 +3,6 @@
     "id": 0,
     "name": "김땡땡",
     "email": "Sincere@april.biz",
-    "city": "서울",
     "phone": "010-1234-1234",
     "stack": ["#프론트엔드", "#백엔드", "#정시출근", "#꼼꼼함"],
     "resume": [
@@ -16,7 +15,6 @@
     "id": 1,
     "name": "한땡땡",
     "email": "Sincere@april.bi",
-    "city": "서울",
     "phone": "010-1234-1234",
     "stack": ["#프론트엔드", "#백엔드", "#정시출근", "#꼼꼼함"],
     "resume": [
@@ -29,7 +27,6 @@
     "id": 2,
     "name": "굼땡땡",
     "email": "Sincere@april.bi",
-    "city": "서울",
     "phone": "010-1234-1234",
     "stack": ["#프론트엔드", "#백엔드", "#정시출근", "#꼼꼼함"],
     "resume": [
@@ -42,7 +39,6 @@
     "id": 3,
     "name": "유땡땡",
     "email": "Sincere@april.bi",
-    "city": "서울",
     "phone": "010-1234-1234",
     "stack": ["#프론트엔드", "#백엔드", "#정시출근", "#꼼꼼함"],
     "resume": [
@@ -55,7 +51,6 @@
     "id": 4,
     "name": "한땡수",
     "email": "Sincere@april.bi",
-    "city": "서울",
     "phone": "010-1234-1234",
     "stack": ["#프론트엔드", "#백엔드", "#정시출근", "#꼼꼼함"],
     "resume": [
@@ -68,7 +63,6 @@
     "id": 5,
     "name": "박땡땡",
     "email": "Sincere@april.bi",
-    "city": "서울",
     "phone": "010-1234-1234",
     "stack": ["#프론트엔드", "#백엔드", "#정시출근", "#꼼꼼함"],
     "resume": [

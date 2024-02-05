@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import CardImg from '../Assets/main_card.png';
 import Background from '../Assets/bg1.svg';
 
@@ -6,10 +8,7 @@ import HireCard from '../Components/Common/HireCard';
 import Header from '../Components/Common/Header';
 import Footer from '../Components/Common/Footer';
 
-import { Link } from 'react-router-dom';
-
-import { useEffect, useState } from 'react';
-import { getUserData, getHireData } from '../fakeApi';
+import { getUserData, getHireData } from '../services/api';
 
 function MainPage() {
   const [hireData, setHireData] = useState([]);

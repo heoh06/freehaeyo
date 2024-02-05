@@ -1,12 +1,11 @@
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../Components/Common/Header';
 import NameCard from '../Components/Common/NameCard';
 import InfoBox from '../Components/Common/MyPage/InfoBox';
 import InfoSummaryBox from '../Components/Common/MyPage/InfoSummaryBox';
 
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-
-import { getUserData } from '../fakeApi';
+import { getUserData } from '../services/api';
 import { getItemLocalStorage } from '../services/localStorage';
 
 function MypageFreelancer() {
@@ -50,12 +49,12 @@ function MypageFreelancer() {
           </section>
           <section>
             <InfoSummaryBox
-              userType={'freelancer'}
+              userType="freelancer"
               bookmarkedData={parsedBookmarkedList}
             />
-            <InfoBox infoCategory={'application'} applicationData={undefined} />
+            <InfoBox infoCategory="application" applicationData={undefined} />
             <InfoBox
-              infoCategory={'bookmark'}
+              infoCategory="bookmark"
               bookmarkedData={parsedBookmarkedList}
             />
           </section>

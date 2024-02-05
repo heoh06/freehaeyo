@@ -1,12 +1,11 @@
+import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+
 import Logo from '../Assets/logo.svg';
 import FreelancerForm from '../Components/Signup/FreelancerForm';
 import CompanyForm from '../Components/Signup/CompanyForm';
 import SelectUser from '../Components/Signup/SelectUser';
-import { postUserData, getUserData } from '../fakeApi';
-
-import { Link } from 'react-router-dom';
-
-import { useState, useEffect } from 'react';
+import { postUserData } from '../services/api';
 
 function SignUp() {
   const [userType, setUserType] = useState('freelancer');
@@ -14,16 +13,6 @@ function SignUp() {
   const [infoValidation, setInfoValidation] = useState([]);
   const [companyInfo, setCompanyInfo] = useState({});
   const [isAgreed, setIsAgreed] = useState(false);
-  const [example, setIsExample] = useState('');
-
-  useEffect(() => {
-    const fetchData = async () => {
-      await getUserData(setIsExample); //
-      console.log(example);
-    };
-
-    fetchData();
-  }, []);
 
   function handleAgreement() {
     setIsAgreed(!isAgreed);
@@ -40,7 +29,8 @@ function SignUp() {
             <img src={Logo} alt="프리해요" />
           </h2>
           <span>
-            회원 가입 유형을 선택 후<p></p>가입 해 주세요
+            회원 가입 유형을 선택 후<br />
+            가입 해 주세요
           </span>
           <form>
             <SelectUser setUserType={setUserType} />
@@ -56,18 +46,22 @@ function SignUp() {
               />
             )}
             <div>
-              <input
-                id="agreement"
-                type="checkbox"
-                onChange={handleAgreement}
-              ></input>
-              <label htmlFor="agreement">
+              <p>
                 본 서비스는 학습용 프로젝트로 모든 개인 정보는 서비스 테스트
                 외에 타용도로 절대 사용되지 않습니다. 또한, 일정 기간 후 파기
                 예정입니다. 개인 정보 기입에 동의하시면 동의 버튼을 눌러주세요.
+              </p>
+              <label htmlFor="agreement">
+                <input
+                  id="agreement"
+                  type="checkbox"
+                  onChange={handleAgreement}
+                />
+                동의
               </label>
             </div>
             <button
+              type="submit"
               onClick={async () => {
                 try {
                   const response = await postUserData(userInfo);

@@ -10,7 +10,7 @@ import Alert from '../Assets/alert.svg';
 
 import UserData from '../MockData/UserData.json';
 
-import { getHireDataById, getCompanyData, getUserData } from '../fakeApi';
+import { getHireDataById, getCompanyData, getUserData } from '../services/api';
 
 import {
   setItemLocalStorage,

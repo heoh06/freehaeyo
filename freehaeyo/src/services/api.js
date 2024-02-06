@@ -52,3 +52,12 @@ export async function postCompanyData(data) {
     return error;
   }
 }
+
+export async function postHireData(data) {
+  try {
+    const response = await axios.post('/hire', data);
+    return response;
+  } catch (error) {
+    return error;
+  }
+}

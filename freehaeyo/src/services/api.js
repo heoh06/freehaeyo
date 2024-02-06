@@ -34,3 +34,21 @@ export function getCompanyData(setData) {
     .then((res) => setData(res.data))
     .catch((err) => console.log(err));
 }
+
+export async function postUserData(data) {
+  try {
+    const response = await axios.post('/userinfo', data);
+    return response;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function postCompanyData(data) {
+  try {
+    const response = await axios.post('/companyinfo', data);
+    return response;
+  } catch (error) {
+    return error;
+  }
+}

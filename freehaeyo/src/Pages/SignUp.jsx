@@ -1,11 +1,37 @@
+import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+
 import Logo from '../Assets/logo.svg';
 import FreelancerForm from '../Components/Signup/FreelancerForm';
 import CompanyForm from '../Components/Signup/CompanyForm';
 import SelectUser from '../Components/Signup/SelectUser';
-
-import { Link } from 'react-router-dom';
+import { postUserData, postCompanyData } from '../services/api';
 
 function SignUp() {
+  const [userType, setUserType] = useState('freelancer');
+  const [userInfo, setUserInfo] = useState({});
+  const [infoValidation, setInfoValidation] = useState([]);
+  const [companyInfo, setCompanyInfo] = useState({});
+  const [isAgreed, setIsAgreed] = useState(false);
+
+  function handleAgreement() {
+    setIsAgreed(!isAgreed);
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      if (userType === 'freelancer') {
+        await postUserData(userInfo);
+      }
+      if (userType === 'company') {
+        await postCompanyData(companyInfo);
+      }
+    } catch (error) {
+      error.message = '회원가입에 실패했습니다.';
+    }
+  }
+
   return (
     <>
       <p>
@@ -17,21 +43,46 @@ function SignUp() {
             <img src={Logo} alt="프리해요" />
           </h2>
           <span>
-            회원 가입 유형을 선택 후<p></p>가입 해 주세요
+            회원 가입 유형을 선택 후<br />
+            가입 해 주세요
           </span>
           <form>
-            <SelectUser />
-            <FreelancerForm />
-            <CompanyForm />
+            <SelectUser setUserType={setUserType} />
+            {userType === 'freelancer' ? (
+              <FreelancerForm
+                setUserInfo={setUserInfo}
+                setInfoValidation={setInfoValidation}
+              />
+            ) : (
+              <CompanyForm
+                setCompanyInfo={setCompanyInfo}
+                setInfoValidation={setInfoValidation}
+              />
+            )}
             <div>
-              <input type="checkbox"></input>
-              <span>
+              <p>
                 본 서비스는 학습용 프로젝트로 모든 개인 정보는 서비스 테스트
                 외에 타용도로 절대 사용되지 않습니다. 또한, 일정 기간 후 파기
                 예정입니다. 개인 정보 기입에 동의하시면 동의 버튼을 눌러주세요.
-              </span>
+              </p>
+              <label htmlFor="agreement">
+                <input
+                  id="agreement"
+                  type="checkbox"
+                  onChange={handleAgreement}
+                />
+                동의
+              </label>
             </div>
-            <button>회원가입</button>
+            {infoValidation.every(Boolean) && isAgreed ? (
+              <button type="submit" onClick={handleSubmit}>
+                회원가입
+              </button>
+            ) : (
+              <button type="submit" disabled>
+                회원가입
+              </button>
+            )}
           </form>
         </main>
       </div>

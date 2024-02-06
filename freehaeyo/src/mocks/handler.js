@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { http, HttpResponse } from 'msw';
 
 import mockCompanyData from '../MockData/CompanyData.json';
@@ -7,56 +8,49 @@ import mockHireTagData from '../MockData/HireTagData.json';
 
 export const handlers = [
   // get요청
-  http.get('/hire', () => {
-    return HttpResponse.json(mockHireData);
-  }),
+  http.get('/hire', () => HttpResponse.json(mockHireData)),
 
   http.get('/hire/:id', ({ params }) => {
     const { id } = params;
     return HttpResponse.json(mockHireData[id]);
   }),
 
-  http.get('/hiretag', () => {
-    return HttpResponse.json(mockHireTagData);
+  http.get('/hiretag', () => HttpResponse.json(mockHireTagData)),
+
+  http.get('/userinfo', () => HttpResponse.json(mockUserData)),
+
+  http.get('/companyinfo', () => HttpResponse.json(mockCompanyData)),
+
+  // post요청
+  http.post('/userinfo', async ({ request }) => {
+    const jsonfiedUser = await request.json();
+
+    const newUserData = {
+      id: mockUserData.length + 1,
+      ...jsonfiedUser,
+    };
+
+    // Todo:나중에 localStorage로 변환 시키기
+    mockUserData.push(newUserData);
+
+    return HttpResponse.json({ message: '회원가입 성공', user: newUserData });
   }),
+  http.post('/companyinfo', async ({ request }) => {
+    const jsonfiedCompany = await request.json();
 
-  http.get('/userinfo', () => {
-    return HttpResponse.json(mockUserData);
+    const newCompanyData = {
+      id: mockUserData.length + 1,
+      ...jsonfiedCompany,
+    };
+
+    // Todo:나중에 localStorage로 변환 시키기
+    mockCompanyData.push(newCompanyData);
+
+    return HttpResponse.json({
+      message: '회원가입 성공',
+      user: newCompanyData,
+    });
   }),
-
-  http.get('/companyinfo', () => {
-    return HttpResponse.json(mockCompanyData);
-  }),
-
-  //   http.get('/company', async (req, res, ctx) => {
-  //     return res(ctx.status(200), ctx.json(mockCompanyData));
-  //   }),
-  //   http.get('/hire', async (req, res, ctx) => {
-  //     return res(ctx.status(200), ctx.json(mockHireData));
-  //   }),
-  //   http.get('/hire/:id', async (req, res, ctx, params) => {
-  //     const { id } = params;
-  //     return res(ctx.status(200), ctx.json(mockHireData[id]));
-  //   }),
-  //   http.get('/userinfo', async (req, res, ctx) => {
-  //     return res(ctx.status(200), ctx.json(mockUserData));
-  //   }),
-  //   http.get('/userinfo/:id', async (req, res, ctx, params) => {
-  //     const { id } = params;
-  //     return res(ctx.status(200), ctx.json(mockUserData[id]));
-  //   }),
-  //   http.get('/hiretag', async (req, res, ctx) => {
-  //     return res(ctx.status(200), ctx.json(mockHireTagData));
-  //   }),
-
-  //   //   post요청
-  //   http.post('/hire', async (req, res, ctx) => {
-  //     mockHireData.push(req.body);
-  //     return res(ctx.status(201), ctx.json(mockHireData));
-  //   }),
-  //   http.post('/hire/:id', async (req, res, ctx, params) => {
-  //     const { id } = params;
-  //     mockHireData[id].push(req.body);
-  //     return res(ctx.status(201), ctx.json(mockHireData));
-  //   }),
 ];
+
+export default handlers;

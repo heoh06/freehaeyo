@@ -1,13 +1,12 @@
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../Components/Common/Header';
 import InfoSummaryBox from '../Components/Common/MyPage/InfoSummaryBox';
 import InfoBox from '../Components/Common/MyPage/InfoBox';
 import CompanyCard from '../Components/Common/CompanyCard';
 import CompanyInfoCard from '../Components/Common/MyPage/CompanyInfoCard';
 
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-
-import { getCompanyData } from '../fakeApi';
+import { getCompanyData } from '../services/api';
 
 function MypageCompany() {
   // Todo:현재 로그인한 companyId값 받아오기
@@ -41,8 +40,8 @@ function MypageCompany() {
           </section>
           <section>
             <InfoSummaryBox />
-            <InfoBox infoCategory={'hiring'} />
-            <InfoBox infoCategory={'pastHire'} />
+            <InfoBox infoCategory="hiring" />
+            <InfoBox infoCategory="pastHire" />
           </section>
         </main>
       </div>

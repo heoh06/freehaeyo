@@ -1,13 +1,10 @@
+import { Chip, Group } from '@mantine/core';
+import { useState, useEffect } from 'react';
 import Header from '../Components/Common/Header';
 import Tag from '../Components/Common/Tag';
 import HireCard from '../Components/Common/HireCard';
 
-import { Chip } from '@mantine/core';
-import { Group } from '@mantine/core';
-
-import { useState, useEffect } from 'react';
-
-import { getHireData, getHireTagData } from '../fakeApi';
+import { getHireData, getHireTagData } from '../services/api';
 
 function Hire() {
   const [checkedTag, setCheckedTag] = useState([]);

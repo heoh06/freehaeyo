@@ -35,6 +35,7 @@ export const handlers = [
 
     return HttpResponse.json({ message: '회원가입 성공', user: newUserData });
   }),
+
   http.post('/companyinfo', async ({ request }) => {
     const jsonfiedCompany = await request.json();
 
@@ -49,6 +50,22 @@ export const handlers = [
     return HttpResponse.json({
       message: '회원가입 성공',
       user: newCompanyData,
+    });
+  }),
+
+  http.post('hire', async ({ request }) => {
+    const jsonfiedHire = await request.json();
+
+    const newHireData = {
+      id: mockHireData.length + 1,
+      ...jsonfiedHire,
+    };
+
+    mockHireData.push(newHireData);
+
+    return HttpResponse.json({
+      message: '구인등록 성공',
+      hire: newHireData,
     });
   }),
 ];

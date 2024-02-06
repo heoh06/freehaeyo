@@ -1,14 +1,13 @@
+/* eslint-disable react/react-in-jsx-scope */
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+
+import CompanyData from '../MockData/CompanyData.json';
+import { postHireData } from '../services/api';
+
 import CompanyCard from '../Components/Common/CompanyCard';
 import CompanyInfoCard from '../Components/Common/MyPage/CompanyInfoCard';
 import Header from '../Components/Common/Header';
-
-import unSelectedCheckBox from '../Assets/unSelectedCheckBox.svg';
-import SelectedCheckBox from '../Assets/selectedCheckBox.svg';
-
-import CompanyData from '../MockData/CompanyData.json';
-
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
 
 function CreateHire() {
   // Todo: 현재 로그인한 companyId값 받아오기
@@ -41,7 +40,16 @@ function CreateHire() {
     }
   }
 
-  //Todo: Submit button 클릭 시 hireData를 서버로 보내기
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      await postHireData(hireData);
+    } catch (error) {
+      error.message = '구인 등록에 실패하셨습니다. 다시 시도해주세요';
+    }
+  }
+
+  // Todo: Submit button 클릭 시 hireData를 서버로 보내기
 
   return (
     <>
@@ -83,22 +91,34 @@ function CreateHire() {
                   disabled={hireData.openingAllTime}
                 />
                 <div>
-                  <input
-                    id="openingAllTime"
-                    type="checkbox"
-                    name="openingAllTime"
-                    onChange={onChangeCheckBox}
-                  />
-                  <label htmlFor="openingAllTime">상시 채용</label>
+                  <label htmlFor="openingAllTime">
+                    <input
+                      id="openingAllTime"
+                      type="checkbox"
+                      name="openingAllTime"
+                      onChange={onChangeCheckBox}
+                    />
+                    상시 채용
+                  </label>
                 </div>
               </div>
-              <button>채용 올리기</button>
+              {hireData.title &&
+              hireData.content &&
+              (hireData.dueDate || hireData.openingAllTime) ? (
+                <button type="submit" onClick={handleSubmit}>
+                  채용 올리기
+                </button>
+              ) : (
+                <button type="submit" disabled>
+                  채용 올리기
+                </button>
+              )}
             </form>
           </section>
           <section>
             <CompanyCard companyData={currentCompanyData} />
             <CompanyInfoCard companyData={currentCompanyData} />
-            <button>
+            <button type="button">
               <Link to="/changecompanyinfo">회사 정보 수정하기</Link>
             </button>
           </section>

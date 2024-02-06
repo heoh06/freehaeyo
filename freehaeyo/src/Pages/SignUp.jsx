@@ -5,7 +5,7 @@ import Logo from '../Assets/logo.svg';
 import FreelancerForm from '../Components/Signup/FreelancerForm';
 import CompanyForm from '../Components/Signup/CompanyForm';
 import SelectUser from '../Components/Signup/SelectUser';
-import { postUserData } from '../services/api';
+import { postUserData, postCompanyData } from '../services/api';
 
 function SignUp() {
   const [userType, setUserType] = useState('freelancer');
@@ -21,10 +21,14 @@ function SignUp() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await postUserData(userInfo);
-      console.log(response);
+      if (userType === 'freelancer') {
+        await postUserData(userInfo);
+      }
+      if (userType === 'company') {
+        await postCompanyData(companyInfo);
+      }
     } catch (error) {
-      console.error('Error:', error);
+      error.message = '회원가입에 실패했습니다.';
     }
   }
 
@@ -70,9 +74,15 @@ function SignUp() {
                 동의
               </label>
             </div>
-            <button type="submit" onClick={handleSubmit}>
-              회원가입
-            </button>
+            {infoValidation.every(Boolean) && isAgreed ? (
+              <button type="submit" onClick={handleSubmit}>
+                회원가입
+              </button>
+            ) : (
+              <button type="submit" disabled>
+                회원가입
+              </button>
+            )}
           </form>
         </main>
       </div>

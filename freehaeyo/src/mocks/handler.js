@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { http, HttpResponse } from 'msw';
 
 import mockCompanyData from '../MockData/CompanyData.json';
@@ -33,6 +34,22 @@ export const handlers = [
     mockUserData.push(newUserData);
 
     return HttpResponse.json({ message: '회원가입 성공', user: newUserData });
+  }),
+  http.post('/companyinfo', async ({ request }) => {
+    const jsonfiedCompany = await request.json();
+
+    const newCompanyData = {
+      id: mockUserData.length + 1,
+      ...jsonfiedCompany,
+    };
+
+    // Todo:나중에 localStorage로 변환 시키기
+    mockCompanyData.push(newCompanyData);
+
+    return HttpResponse.json({
+      message: '회원가입 성공',
+      user: newCompanyData,
+    });
   }),
 ];
 

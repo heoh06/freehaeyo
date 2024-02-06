@@ -43,3 +43,12 @@ export async function postUserData(data) {
     return error;
   }
 }
+
+export async function postCompanyData(data) {
+  try {
+    const response = await axios.post('/companyinfo', data);
+    return response;
+  } catch (error) {
+    return error;
+  }
+}
